@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+EnvironmentFile=/etc/default/prometheus
+ExecStart=/usr/local/bin/prometheus $OPTIONS
+
+[Install]
+WantedBy=multi-user.target
